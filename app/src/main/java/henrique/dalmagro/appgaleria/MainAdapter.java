@@ -31,7 +31,6 @@ public class MainAdapter extends RecyclerView.Adapter {
         return new ViewHolder(v);
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         ImageView imPhoto = holder.itemView.findViewById(R.id.imItem);

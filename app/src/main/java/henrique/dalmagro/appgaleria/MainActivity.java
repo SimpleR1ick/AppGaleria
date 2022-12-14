@@ -58,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
         File dir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File[] files = dir.listFiles();
         assert files != null;
+
         for (File file : files) {
             photos.add(file.getAbsolutePath());
         }
-
         mainAdapter = new MainAdapter(MainActivity.this, photos);
 
         RecyclerView rvGallery = findViewById(R.id.rvGallery);
@@ -71,9 +71,7 @@ public class MainActivity extends AppCompatActivity {
         int numberOfColumns = Utils.calculateNoOfColumns(MainActivity.this, w);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(MainActivity.this, numberOfColumns);
         rvGallery.setLayoutManager(gridLayoutManager);
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -82,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.main_activity_tb, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -93,13 +90,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     public void startPhotoActivity(String photoPath) {
         Intent i = new Intent(MainActivity.this, PhotoActivity.class);
         i.putExtra("photo_path", photoPath);
         startActivity(i);
     }
-
 
     private void dispatchTakePictureIntent() {
         File f = null;
@@ -120,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     private File createImageFile() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp;
@@ -128,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
         File f = File.createTempFile(imageFileName, ".jpg", storageDir);
         return f;
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -143,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
 
     private void checkForPermissions(List<String> permissions) {
         List<String> permissionsNotGranted = new ArrayList<>();
@@ -161,14 +153,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     private boolean hasPermission(String permission) {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             return ActivityCompat.checkSelfPermission(MainActivity.this, permission) == PackageManager.PERMISSION_GRANTED;
         }
         return false;
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

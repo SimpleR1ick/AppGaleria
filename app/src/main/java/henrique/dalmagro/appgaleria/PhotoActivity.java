@@ -33,7 +33,6 @@ public class PhotoActivity extends AppCompatActivity {
 
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-
         Intent i = getIntent();
         photoPath = i.getStringExtra("photo_path");
 
@@ -42,7 +41,6 @@ public class PhotoActivity extends AppCompatActivity {
         imPhoto.setImageBitmap(bitmap);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -50,7 +48,6 @@ public class PhotoActivity extends AppCompatActivity {
         inflater.inflate(R.menu.photo_activity_tb, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -72,5 +69,4 @@ public class PhotoActivity extends AppCompatActivity {
 
         startActivity(i);
     }
-
 }
